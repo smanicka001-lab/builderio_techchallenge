@@ -16,7 +16,7 @@ function App() {
         onChange={(e) => setZip(e.target.value)}
       />
 
-      <div style={{ marginTop: '1rem' }}>
+      <div style={{ marginTop: '1rem', marginLeft: 'auto', marginRight: 'auto', width: 'fit-content' }}>
         <Button>Get Forecast</Button>
       </div>
 
