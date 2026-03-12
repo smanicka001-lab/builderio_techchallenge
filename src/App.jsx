@@ -4,6 +4,16 @@ import './App.css'
 
 function App() {
   const [zip, setZip] = useState('90210')
+  const [forecast, setForecast] = useState([])
+
+  async function getWeather() {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_WEATHER_API}&units=imperial`
+    )
+
+    const data = await response.json()
+    setForecast(data.list || [])
+  }
 
   return (
     <main style={{ padding: '2rem' }}>
@@ -16,16 +26,25 @@ function App() {
         onChange={(e) => setZip(e.target.value)}
       />
 
-      <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-        <Button style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
+      <div style={{ marginTop: '1rem' }}>
+        <Button onClick={getWeather}>Get Forecast</Button>
       </div>
 
       <div style={{ marginTop: '2rem' }}>
-        <Tile>
-          <h3>Sample Forecast</h3>
-          <p>72°F</p>
-          <p>Partly cloudy</p>
-        </Tile>
+        {forecast.length > 0 ? (
+          forecast.slice(0, 5).map((item) => (
+            <Tile key={item.dt} style={{ marginBottom: '1rem' }}>
+              <h3>{new Date(item.dt * 1000).toLocaleString()}</h3>
+              <p>{item.main.temp}°F</p>
+              <p>{item.weather[0].description}</p>
+            </Tile>
+          ))
+        ) : (
+          <Tile>
+            <h3>Sample Forecast</h3>
+            <p>No forecast loaded yet</p>
+          </Tile>
+        )}
       </div>
     </main>
   )
