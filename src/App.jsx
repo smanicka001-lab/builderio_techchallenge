@@ -5,14 +5,26 @@ import './App.css'
 function App() {
   const [zip, setZip] = useState('90210')
   const [forecast, setForecast] = useState([])
+  const [error, setError] = useState(null)
 
   async function getWeather() {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_WEATHER_API}&units=imperial`
-    )
+    setError(null)
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_WEATHER_API}&units=imperial`
+      )
 
-    const data = await response.json()
-    setForecast(data.list || [])
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || `API Error: ${response.status}`)
+      }
+
+      setForecast(data.list || [])
+    } catch (err) {
+      setError(err.message)
+      setForecast([])
+    }
   }
 
   return (
@@ -29,6 +41,12 @@ function App() {
       <div style={{ marginTop: '1rem' }}>
         <Button onClick={getWeather} style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
       </div>
+
+      {error && (
+        <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#fff1f1', border: '1px solid #da1e28', borderRadius: '4px' }}>
+          <strong style={{ color: '#da1e28' }}>Error:</strong> {error}
+        </div>
+      )}
 
       <div style={{ marginTop: '2rem' }}>
         {forecast.length > 0 ? (
