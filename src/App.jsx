@@ -17,7 +17,7 @@ function App() {
       />
 
       <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-        <Button>Get Forecast</Button>
+        <Button style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
       </div>
 
       <div style={{ marginTop: '2rem' }}>
