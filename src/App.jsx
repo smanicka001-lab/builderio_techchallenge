@@ -27,7 +27,7 @@ function App() {
       />
 
       <div style={{ marginTop: '1rem' }}>
-        <Button onClick={getWeather}>Get Forecast</Button>
+        <Button onClick={getWeather} style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
       </div>
 
       <div style={{ marginTop: '2rem' }}>
