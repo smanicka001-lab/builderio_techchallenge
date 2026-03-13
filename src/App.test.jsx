@@ -15,7 +15,7 @@ describe('App Component', () => {
   describe('Initial Render', () => {
     it('renders the main heading', () => {
       render(<App />)
-      expect(screen.getByText('Forecast4U Weather Prototype')).toBeInTheDocument()
+      expect(screen.getByText('Forecast4U Weather POV Prototype')).toBeInTheDocument()
     })
 
     it('renders the instruction heading', () => {
