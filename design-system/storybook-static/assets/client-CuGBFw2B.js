@@ -1,0 +1,1 @@
+import{i as e}from"./iframe-DJKUDUe_.js";import{t}from"./react-dom-BkcJ0ABH.js";var n=e((e=>{var n=t(),r=n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;e.createRoot=function(e,t){r.usingClientEntryPoint=!0;try{return n.createRoot(e,t)}finally{r.usingClientEntryPoint=!1}}}));export{n as t};
