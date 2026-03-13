@@ -72,7 +72,7 @@ function App() {
                     <div style={{ fontSize: '0.75rem', marginBottom: '0.25rem' }}>
                       {new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
-                    <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
+                    <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
                     <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>{item.weather[0].description}</div>
                   </Tile>
                 ))}
