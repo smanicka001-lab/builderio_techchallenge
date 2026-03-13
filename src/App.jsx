@@ -1,17 +1,22 @@
 import { useState } from 'react'
 import { Button, TextInput, Tile } from '@carbon/react'
-import { Close } from '@carbon/icons-react'
+import { Close, Asleep, Light } from '@carbon/icons-react'
 import './App.css'
 
 function App() {
   const [zip, setZip] = useState('90210')
   const [forecast, setForecast] = useState([])
   const [error, setError] = useState(null)
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   function clearInput() {
     setZip('')
     setForecast([])
     setError(null)
+  }
+
+  function toggleDarkMode() {
+    setIsDarkMode(!isDarkMode)
   }
 
   async function getWeather() {
@@ -48,13 +53,35 @@ function App() {
   const days = Object.keys(groupedForecast).slice(0, 5)
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>Forecast4U Weather Prototype</h1>
+    <main style={{
+      padding: '2rem',
+      backgroundColor: isDarkMode ? '#1a1a1a' : '#f4f4f4',
+      minHeight: '100vh',
+      transition: 'background-color 0.3s'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1 style={{ color: isDarkMode ? 'white' : 'inherit' }}>Forecast4U Weather Prototype</h1>
+        <button
+          onClick={toggleDarkMode}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            color: isDarkMode ? 'white' : 'black'
+          }}
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {isDarkMode ? <Light size={24} /> : <Asleep size={24} />}
+        </button>
+      </div>
 
-      <h2 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '20px', textAlign: 'left' }}>Enter Zip Code and click on Get Forecast</h2>
+      <h2 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '20px', textAlign: 'left', color: isDarkMode ? 'white' : 'inherit' }}>Enter Zip Code and click on Get Forecast</h2>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px' }}>ZIP Code</label>
+        <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px', color: isDarkMode ? 'white' : 'inherit' }}>ZIP Code</label>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <input
             id="zip-code"
@@ -98,7 +125,7 @@ function App() {
         {forecast.length > 0 ? (
           days.map((day) => (
             <div key={day} style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', alignItems: 'center' }}>
-              <div style={{ minWidth: '90px', fontWeight: 'bold', fontSize: '0.875rem' }}>{day}</div>
+              <div style={{ minWidth: '90px', fontWeight: 'bold', fontSize: '0.875rem', color: isDarkMode ? 'white' : 'inherit' }}>{day}</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: '0.75rem', flex: 1 }}>
                 {groupedForecast[day].map((item) => (
                   <Tile key={item.dt} style={{ padding: '0.75rem', minWidth: 0, backgroundColor: 'white', border: '1px solid black' }}>
