@@ -44,15 +44,15 @@ function App() {
     <main style={{ padding: '2rem' }}>
       <h1>Forecast4U Weather Prototype</h1>
 
-      <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1rem', marginTop: '1rem' }}>
-        <div style={{ width: '200px' }}>
-          <TextInput
-            id="zip-code"
-            labelText="ZIP Code"
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+        <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px' }}>ZIP Code</label>
+        <TextInput
+          id="zip-code"
+          labelText=""
+          value={zip}
+          onChange={(e) => setZip(e.target.value)}
+          style={{ width: '150px' }}
+        />
         <Button onClick={getWeather} style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
       </div>
 
