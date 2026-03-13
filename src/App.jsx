@@ -16,6 +16,7 @@ function App() {
       if (!apiKey) {
         throw new Error('VITE_WEATHER_API is missing')
       }
+      console.log('API Key:', apiKey)
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}&units=imperial`
       )
