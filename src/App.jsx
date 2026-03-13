@@ -44,7 +44,7 @@ function App() {
     <main style={{ padding: '2rem' }}>
       <h1>Forecast4U Weather Prototype</h1>
 
-      <h2 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.25rem' }}>Enter Zip Code and click on Get Forecast</h2>
+      <h2 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '20px', textAlign: 'left' }}>Enter Zip Code and click on Get Forecast</h2>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px' }}>ZIP Code</label>
