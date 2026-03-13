@@ -88,12 +88,7 @@ function App() {
               </div>
             </div>
           ))
-        ) : (
-          <Tile>
-            <h3>Sample Forecast</h3>
-            <p>No forecast loaded yet</p>
-          </Tile>
-        )}
+        ) : null}
       </div>
     </main>
   )
