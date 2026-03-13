@@ -64,16 +64,16 @@ function App() {
       <div style={{ marginTop: '2rem' }}>
         {forecast.length > 0 ? (
           days.map((day) => (
-            <div key={day} style={{ marginBottom: '2rem' }}>
-              <h2 style={{ marginBottom: '1rem' }}>{day}</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '1rem' }}>
+            <div key={day} style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', alignItems: 'center' }}>
+              <div style={{ minWidth: '120px', fontWeight: 'bold', fontSize: '1rem' }}>{day}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '0.75rem', flex: 1 }}>
                 {groupedForecast[day].map((item) => (
-                  <Tile key={item.dt} style={{ padding: '1rem' }}>
-                    <div style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                  <Tile key={item.dt} style={{ padding: '0.75rem' }}>
+                    <div style={{ fontSize: '0.75rem', marginBottom: '0.25rem' }}>
                       {new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
-                    <div style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>{item.weather[0].description}</div>
+                    <div style={{ fontSize: '1rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
+                    <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>{item.weather[0].description}</div>
                   </Tile>
                 ))}
               </div>
