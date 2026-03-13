@@ -1,11 +1,18 @@
 import { useState } from 'react'
 import { Button, TextInput, Tile } from '@carbon/react'
+import { Close } from '@carbon/icons-react'
 import './App.css'
 
 function App() {
   const [zip, setZip] = useState('90210')
   const [forecast, setForecast] = useState([])
   const [error, setError] = useState(null)
+
+  function clearInput() {
+    setZip('')
+    setForecast([])
+    setError(null)
+  }
 
   async function getWeather() {
     setError(null)
@@ -48,14 +55,36 @@ function App() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px' }}>ZIP Code</label>
-        <input
-          id="zip-code"
-          type="text"
-          className="cds--text-input"
-          value={zip}
-          onChange={(e) => setZip(e.target.value)}
-          style={{ width: '150px' }}
-        />
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+          <input
+            id="zip-code"
+            type="text"
+            className="cds--text-input"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            style={{ width: '150px', paddingRight: '30px' }}
+          />
+          {zip && (
+            <button
+              onClick={clearInput}
+              style={{
+                position: 'absolute',
+                right: '5px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer',
+                padding: '4px',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+              aria-label="Clear input"
+            >
+              <Close size={16} />
+            </button>
+          )}
+        </div>
         <Button onClick={getWeather} style={{ paddingRight: '16.875px' }}>Get Forecast</Button>
       </div>
 
