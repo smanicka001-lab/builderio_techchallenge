@@ -10,8 +10,13 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
-      const apiKey = import.meta.env.VITE_NEW_API || 'f595bfcbd8d4710ee93f1a8a8cebbe44'
-      console.log('API Key:', apiKey)
+      const envValue = import.meta.env.VITE_NEW_API
+      console.log('Environment variable VITE_NEW_API:', envValue)
+      console.log('Is env var defined?', envValue !== undefined)
+
+      const apiKey = envValue || 'f595bfcbd8d4710ee93f1a8a8cebbe44'
+      console.log('Using API key from:', envValue ? 'environment' : 'fallback')
+
       if (!apiKey || apiKey === 'undefined') {
         throw new Error('VITE_NEW_API environment variable is not set')
       }
