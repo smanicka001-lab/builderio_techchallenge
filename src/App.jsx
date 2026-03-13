@@ -60,7 +60,7 @@ function App() {
       transition: 'background-color 0.3s'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ color: isDarkMode ? 'white' : 'inherit' }}>Forecast4U Weather Prototype</h1>
+        <h1 style={{ color: isDarkMode ? 'white' : 'inherit' }}>Forecast4U Weather POV Prototype</h1>
         <button
           onClick={toggleDarkMode}
           style={{
