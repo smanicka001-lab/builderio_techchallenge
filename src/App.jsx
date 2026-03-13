@@ -68,12 +68,12 @@ function App() {
               <div style={{ minWidth: '90px', fontWeight: 'bold', fontSize: '0.875rem' }}>{day}</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: '0.75rem', flex: 1 }}>
                 {groupedForecast[day].map((item) => (
-                  <Tile key={item.dt} style={{ padding: '0.75rem' }}>
+                  <Tile key={item.dt} style={{ padding: '0.75rem', minWidth: 0 }}>
                     <div style={{ fontSize: '0.75rem', marginBottom: '0.25rem' }}>
                       {new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
                     <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
-                    <div style={{ fontSize: '0.75rem', marginTop: '0.25rem', wordWrap: 'break-word', lineHeight: '1.2' }}>{item.weather[0].description}</div>
+                    <div style={{ fontSize: '0.75rem', marginTop: '0.25rem', overflowWrap: 'break-word', lineHeight: '1.2', whiteSpace: 'normal' }}>{item.weather[0].description}</div>
                   </Tile>
                 ))}
               </div>
