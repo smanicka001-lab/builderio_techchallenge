@@ -44,11 +44,12 @@ function App() {
     <main style={{ padding: '2rem' }}>
       <h1>Forecast4U Weather Prototype</h1>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem' }}>
         <label htmlFor="zip-code" style={{ fontWeight: 600, fontSize: '17.5px' }}>ZIP Code</label>
-        <TextInput
+        <input
           id="zip-code"
-          labelText=""
+          type="text"
+          className="cds--text-input"
           value={zip}
           onChange={(e) => setZip(e.target.value)}
           style={{ width: '150px' }}
