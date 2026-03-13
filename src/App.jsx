@@ -10,7 +10,7 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
-      const apiKey = import.meta.env.VITE_NEW_API || 'f595bfcbd8d4710ee93f1a8a8cebbe44'
+      const apiKey = import.meta.env.VITE_NEW_API
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}&units=imperial`
       )
