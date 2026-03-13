@@ -10,11 +10,8 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
-      // Using hardcoded key - platform env vars were overriding .env file with incorrect value
-      const apiKey = import.meta.env.VITE_WEATHER_API || 'f595bfcbd8d4710ee93f1a8a8cebbe44'
-      if (!apiKey) {
-        throw new Error('API key is missing')
-      }
+      // Direct API key - platform env var issue
+      const apiKey = 'f595bfcbd8d4710ee93f1a8a8cebbe44'
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}&units=imperial`
       )
