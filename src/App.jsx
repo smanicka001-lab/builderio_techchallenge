@@ -10,11 +10,7 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
-      console.log('All env variables:', import.meta.env)
-      // Temporarily hardcoded to test
-      const apiKey = 'f595bfcbd8d4710ee93f1a8a8cebbe44'
-      console.log('Using API Key:', apiKey)
-      console.log('API Key length:', apiKey?.length)
+      const apiKey = import.meta.env.VITE_WEATHER_API
       if (!apiKey) {
         throw new Error('VITE_WEATHER_API is missing')
       }
