@@ -8,21 +8,23 @@ npm run test -- --run
 ```
 This runs all tests once and shows results in the terminal.
 
-### 2. Watch Mode (Auto-run on file changes)
+### 2. Watch Mode (Auto-run on file changes) - RECOMMENDED
 ```bash
 npm run test:watch
 ```
 - Tests automatically re-run when you save files
 - Keeps running in the background
+- Shows detailed results in real-time
 - Press `q` to quit
+- **Best option for interactive development**
 
-### 3. Interactive UI Mode
+### 3. Verbose Output
 ```bash
-npm run test:ui
+npm run test -- --run --reporter=verbose
 ```
-- Opens a browser-based test UI
-- Visual interface to see test results
-- Can filter and search tests
+- Shows each individual test name
+- Displays pass/fail status for every test
+- Includes timing information
 
 ### 4. Coverage Report
 ```bash
@@ -112,10 +114,11 @@ The test suite covers:
 
 ## Tips
 
+- Use watch mode during development: `npm run test:watch` (RECOMMENDED)
 - Run tests before committing manually: `npm run test -- --run`
-- Use watch mode during development: `npm run test:watch`
-- Check test UI for visual feedback: `npm run test:ui`
+- Use verbose mode for detailed output: `npm run test -- --run --reporter=verbose`
 - Review coverage to find untested code: `npm run test:coverage`
+- Tests run automatically before commits via pre-commit hook
 
 ## Debugging Failed Tests
 
