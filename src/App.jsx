@@ -11,7 +11,7 @@ function App() {
     setError(null)
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_WEATHER_API}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_OPENWEATHER_API}&units=imperial`
       )
 
       const data = await response.json()
