@@ -1,0 +1,9 @@
+# Testing rules
+
+- For every new feature or behavior change, create or update unit tests automatically.
+- Do not finish a code change unless relevant unit tests are added or updated.
+- Use Vitest, jsdom, and React Testing Library for unit tests.
+- Place tests next to source files as `*.test.jsx` or `*.test.js`.
+- After modifying code, run `npm run test:run` and fix any failing tests.
+- Prefer small focused tests over broad integration-style tests.
+- When changing UI text or interactions, update existing tests instead of deleting coverage.
