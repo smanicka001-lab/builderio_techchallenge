@@ -10,8 +10,11 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
-      // Direct API key - platform env var issue
-      const apiKey = import.meta.env.VITE_NEW_API //'f595bfcbd8d4710ee93f1a8a8cebbe44'
+      const apiKey = import.meta.env.VITE_NEW_API || 'f595bfcbd8d4710ee93f1a8a8cebbe44'
+      console.log('API Key:', apiKey)
+      if (!apiKey || apiKey === 'undefined') {
+        throw new Error('VITE_NEW_API environment variable is not set')
+      }
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}&units=imperial`
       )
