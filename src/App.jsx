@@ -10,6 +10,10 @@ function App() {
   async function getWeather() {
     setError(null)
     try {
+      const apiKey = import.meta.env.VITE_OPENWEATHER_API
+      if (!apiKey) {
+        throw new Error('VITE_OPENWEATHER_API is missing')
+      }
       const response = await fetch(
         `http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${import.meta.env.VITE_OPENWEATHER_API}&units=imperial`
       )
