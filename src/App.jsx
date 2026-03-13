@@ -51,7 +51,7 @@ function App() {
 
       <div style={{ marginTop: '2rem' }}>
         {forecast.length > 0 ? (
-          forecast.slice(0, 5).map((item) => (
+          forecast.slice(0, 40).map((item) => (
             <Tile key={item.dt} style={{ marginBottom: '1rem' }}>
               <h3>{new Date(item.dt * 1000).toLocaleString()}</h3>
               <p>{item.main.temp}°F</p>
