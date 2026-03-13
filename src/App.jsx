@@ -28,6 +28,18 @@ function App() {
     }
   }
 
+  // Group forecast by day
+  const groupedForecast = forecast.reduce((acc, item) => {
+    const date = new Date(item.dt * 1000).toLocaleDateString()
+    if (!acc[date]) {
+      acc[date] = []
+    }
+    acc[date].push(item)
+    return acc
+  }, {})
+
+  const days = Object.keys(groupedForecast).slice(0, 5)
+
   return (
     <main style={{ padding: '2rem' }}>
       <h1>Forecast4U Weather Prototype</h1>
@@ -51,12 +63,21 @@ function App() {
 
       <div style={{ marginTop: '2rem' }}>
         {forecast.length > 0 ? (
-          forecast.slice(0, 40).map((item) => (
-            <Tile key={item.dt} style={{ marginBottom: '1rem' }}>
-              <h3>{new Date(item.dt * 1000).toLocaleString()}</h3>
-              <p>{item.main.temp}°F</p>
-              <p>{item.weather[0].description}</p>
-            </Tile>
+          days.map((day) => (
+            <div key={day} style={{ marginBottom: '2rem' }}>
+              <h2 style={{ marginBottom: '1rem' }}>{day}</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '1rem' }}>
+                {groupedForecast[day].map((item) => (
+                  <Tile key={item.dt} style={{ padding: '1rem' }}>
+                    <div style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                      {new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </div>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
+                    <div style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>{item.weather[0].description}</div>
+                  </Tile>
+                ))}
+              </div>
+            </div>
           ))
         ) : (
           <Tile>
