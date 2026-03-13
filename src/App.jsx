@@ -74,6 +74,11 @@ function App() {
                     </div>
                     <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{Math.round(item.main.temp)}°F</div>
                     <div style={{ fontSize: '0.75rem', marginTop: '0.25rem', overflowWrap: 'break-word', lineHeight: '1.2', whiteSpace: 'normal' }}>{item.weather[0].description}</div>
+                    <img
+                      src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                      alt={item.weather[0].description}
+                      style={{ width: '40px', height: '40px', marginTop: '0.25rem' }}
+                    />
                   </Tile>
                 ))}
               </div>
