@@ -11,6 +11,8 @@ function App() {
     setError(null)
     try {
       const apiKey = import.meta.env.VITE_WEATHER_API
+      console.log('API Key value:', apiKey)
+      console.log('API Key length:', apiKey?.length)
       if (!apiKey) {
         throw new Error('VITE_WEATHER_API is missing')
       }
