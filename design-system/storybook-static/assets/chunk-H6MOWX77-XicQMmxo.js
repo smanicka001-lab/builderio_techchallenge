@@ -1,0 +1,1 @@
+var e=Object.defineProperty;Object.getOwnPropertyDescriptor,Object.getOwnPropertyNames,Object.getPrototypeOf,Object.prototype.hasOwnProperty;var t=(t,n)=>{for(var r in n)e(t,r,{get:n[r],enumerable:!0})};export{t};
